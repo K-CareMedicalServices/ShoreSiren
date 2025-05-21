@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShoreSiren | Uncover Paradise</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.3/dist/js/splide.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.3/dist/css/splide.min.css">
+</head>
+<body class="bg-gradient-to-b from-blue-100 via-white to-yellow-100 text-gray-800">
+  <!-- Navigation Bar -->
+  <nav class="bg-blue-900 text-white p-4 fixed w-full top-0 z-10">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="/" class="text-2xl font-bold">ShoreSiren</a>
+      <div class="space-x-4">
+        <a href="#home" class="hover:underline">Home</a>
+        <a href="#creators" class="hover:underline">Creators</a>
+        <a href="#how-it-works" class="hover:underline">How It Works</a>
+        <a href="#home" class="bg-teal-500 hover:bg-teal-600 text-white px-4 py-2 rounded">Join Now</a>
+      </div>
+    </div>
+  </nav>
+  <!-- Hero Section -->
+  <header id="home" class="relative bg-cover bg-center h-screen pt-16" style="background-image: url('https://via.placeholder.com/1500x800'); /* Replace with second image URL */">
+    <div class="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center text-center p-4">
+      <h1 class="text-4xl md:text-6xl font-bold text-white drop-shadow-lg">Uncover Paradise, One Exclusive Post at a Time</h1>
+      <p class="mt-4 text-lg md:text-xl text-blue-100">Join the ultimate beachside fan experience</p>
+      <div class="mt-6 space-x-4">
+        <a href="#" class="bg-teal-500 hover:bg-teal-600 text-white px-6 py-3 rounded-xl text-lg font-semibold join-btn">Join Now</a>
+        <a href="#" class="bg-white hover:bg-gray-200 text-teal-600 px-6 py-3 rounded-xl text-lg font-semibold creator-btn">Become a Creator</a>
+      </div>
+      <p class="mt-4 text-sm md:text-base text-white">To join, pay Ksh. 111 to Mpesa till number 5260437</p>
+    </div>
+  </header>
+  <!-- Featured Creators Slider -->
+  <section id="creators" class="py-16 px-6 md:px-20 bg-white">
+    <h2 class="text-3xl font-bold text-center mb-8">Featured ShoreSirens</h2>
+    <div id="creator-slider" class="splide">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide"><img src="https://via.placeholder.com/200x200" alt="Creator 1" class="rounded-full mx-auto mb-2"><p class="text-center font-semibold">@BeachBabe</p></li>
+          <li class="splide__slide"><img src="https://via.placeholder.com/200x200" alt="Creator 2" class="rounded-full mx-auto mb-2"><p class="text-center font-semibold">@WaveQueen</p></li>
+          <li class="splide__slide"><img src="https://via.placeholder.com/200x200" alt="Creator 3" class="rounded-full mx-auto mb-2"><p class="text-center font-semibold">@SandyMuse</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <!-- How It Works -->
+  <section id="how-it-works" class="py-16 px-6 md:px-20 text-center bg-blue-50">
+    <h2 class="text-3xl font-bold mb-8">How ShoreSiren Works</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-xl font-semibold mb-2">1. Explore Creators</h3>
+        <p>Browse stunning creators with beach vibes and exclusive content.</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-2">2. Subscribe for Access</h3>
+        <p>Unlock premium posts, chats, and personalized shoutouts.</p>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-2">3. Connect & Enjoy</h3>
+        <p>Message, tip, and build your own paradise connection.</p>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-blue-900 text-white py-6 text-center">
+    <p>© 2025 ShoreSiren. All rights reserved.</p>
+    <div class="mt-2 space-x-4">
+      <a href="#" class="hover:underline">About</a>
+      <a href="#" class="hover:underline">FAQ</a>
+      <a href="#" class="hover:underline">Terms</a>
+      <a href="#" class="hover:underline">Privacy</a>
+    </div>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Smooth scrolling for navigation links
+      const anchors = document.querySelectorAll('a[href^="#"]');
+      anchors.forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
+          if (href && href !== '#' && href.length > 1) { // Ensure valid ID selector
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({
+                behavior: 'smooth'
+              });
+            }
+          }
+        });
+      });
+
+      // Slider initialization
+      new Splide('#creator-slider', {
+        type   : 'loop',
+        perPage: 3,
+        autoplay: true,
+        gap: '1rem',
+        breakpoints: {
+          768: {
+            perPage: 1,
+          }
+        }
+      }).mount();
+
+      // Button click alerts
+      const joinBtn = document.querySelector('.join-btn');
+      const creatorBtn = document.querySelector('.creator-btn');
+      if (joinBtn) {
+        joinBtn.addEventListener('click', function () {
+          alert('Please pay Ksh. 111 to Mpesa till number 5260437 to join!');
+        });
+      }
+      if (creatorBtn) {
+        creatorBtn.addEventListener('click', function () {
+          alert('Contact support to become a creator!');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
